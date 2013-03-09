@@ -1,7 +1,11 @@
 package fi.nottingham.sortalorithms;
 
-import java.util.Collection;
 
-public interface SortAlgorithm<T> {
-	Collection<T> sort(Collection<T> collection);
+public interface SortAlgorithm {
+	
+	/**
+	 * @param list of data
+	 * @return 
+	 */
+	<T extends Comparable<? super T>> void sort(T[] array);
 }

@@ -1,26 +1,33 @@
 package fi.nottingham.sortalorithms;
 
-import java.util.Collection;
+import java.util.Arrays;
 
-public class BubbleSort<T> implements SortAlgorithm<T> {
-	
-	private T[] array;
+
+public class BubbleSort implements SortAlgorithm {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Collection<T> sort(Collection<T> collection) {
-		array = (T[]) collection.toArray();
-		
-		
-		
-		return null;
+	public <T extends Comparable<? super T>> void sort(T[] array) {
+		int n = array.length - 1;
+		boolean swapped = false;
+		do {
+			swapped = false;
+			for (int i = 1; i <= n; i++) {
+				// if previous is bigger than latter -> do swap
+				if (array[i - 1].compareTo(array[i]) > 0) {
+					swap(i-1, i, array);
+					swapped = true;
+					System.out.println(Arrays.toString(array));
+				}
+			}
+			n--;
+		} while (swapped == true);
 	}
-	
-	private void swap(int index) {
-		int previousIndex = index-1;
-		T tmp = array[index];
-		array[index] = array[previousIndex];
-		array[previousIndex] = tmp;
+
+	private <T extends Comparable<? super T>> void swap(int previous, int latter, T[] array) {
+		T tmp = array[previous];
+		array[previous] = array[latter];
+		array[latter] = tmp;
 	}
 
 }
