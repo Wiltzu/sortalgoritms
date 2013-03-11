@@ -3,6 +3,13 @@ package fi.nottingham.sortalorithms;
 import java.util.Arrays;
 
 
+/**
+ * <p>Class uses bubble sort algorithm for sorting.</p>
+ * 
+ * @author Ville Ahti
+ * @author Antti Laine
+ *
+ */
 public class BubbleSort extends AbstractSortAlgorithm {
 
 	@SuppressWarnings("unchecked")

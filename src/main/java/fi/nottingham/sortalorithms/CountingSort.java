@@ -4,7 +4,7 @@ public class CountingSort {
 
 	/**
 	 * <p>
-	 * Not in-place counting sort.
+	 * Not in-place counting sort because it returns a new array that is sorted.
 	 * </p>
 	 * 
 	 * @param array

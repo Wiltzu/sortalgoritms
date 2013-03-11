@@ -1,7 +1,13 @@
 package fi.nottingham.sortalorithms;
 
-import java.util.Arrays;
 
+/**
+ * <p>Class uses quicksort algorithm for sorting.</p>
+ * 
+ * @author Ville Ahti
+ * @author Antti Laine
+ *
+ */
 public class Quicksort extends AbstractSortAlgorithm {
 
 	@Override
@@ -9,6 +15,18 @@ public class Quicksort extends AbstractSortAlgorithm {
 		quicksort(array, 0, array.length - 1);
 	}
 
+	/**
+	 * <p>
+	 * Implements the recursive quicksort algorithm.
+	 * </p>
+	 * 
+	 * @param array
+	 *            of data
+	 * @param left
+	 *            the leftmost value of this part of an array
+	 * @param right
+	 *            rightmost value of this part of an array
+	 */
 	private <T extends Comparable<? super T>> void quicksort(T[] array,
 			int left, int right) {
 		// if the list has two or more items
@@ -27,9 +45,25 @@ public class Quicksort extends AbstractSortAlgorithm {
 		}
 	}
 
+	/**
+	 * <p>
+	 * Implements partition algorithm for quicksort.
+	 * </p>
+	 * 
+	 * 
+	 * @param array
+	 *            of data
+	 * @param left
+	 *            leftmost value of this part of an array
+	 * @param right
+	 *            rightmost value of this part of an array
+	 * @param pivotIndex
+	 *            old pivot index
+	 * @return new pivot index
+	 */
 	private <T extends Comparable<? super T>> int partition(T[] array,
 			int left, int right, int pivotIndex) {
-		//Store pivot value
+		// Store pivot value
 		final T pivotValue = array[pivotIndex];
 		// move pivot to end (rightmost index)
 		swap(pivotIndex, right, array);

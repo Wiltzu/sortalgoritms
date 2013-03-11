@@ -10,32 +10,56 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+/**
+ * <p>
+ * Interface test for SortAlgorithms
+ * </p>
+ * 
+ * @author Ville Ahti
+ * @author Antti Laine
+ * 
+ */
 @RunWith(Parameterized.class)
 public class SortAlgorithmTest {
 
-	private static final int ARRAY_LENGHT = 50000;
+	private final int arrayLenght, high;
 	private SortAlgorithm sortAlgoritm;
 	private Integer[] testArray;
-	
-	public SortAlgorithmTest(SortAlgorithm algorithm) {
+
+	/**
+	 * <p>
+	 * Constructor for this class.
+	 * </p>
+	 * 
+	 * @param algorithm
+	 *            to use for testing
+	 */
+	public SortAlgorithmTest(SortAlgorithm algorithm, int arrayLenght, int high) {
 		this.sortAlgoritm = algorithm;
+		this.arrayLenght = arrayLenght;
+		this.high = high;
 	}
 
+	/**
+	 * <p>
+	 * Generates data for the test
+	 * </p>
+	 */
 	@Before
 	public void generateTestData() {
 		Random random = new Random();
-		testArray = new Integer[ARRAY_LENGHT];
+		testArray = new Integer[arrayLenght];
 
-		for (int i = 0; i < ARRAY_LENGHT; i++) {
-			testArray[i] = random.nextInt(ARRAY_LENGHT / 2);
+		for (int i = 0; i < arrayLenght; i++) {
+			testArray[i] = random.nextInt(high + 1);
 		}
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		testArray = null;
-	}
-
+	/**
+	 * <p>
+	 * Tests sort algorithm
+	 * </p>
+	 */
 	@Test
 	public void testSort() {
 		// System.out.println(Arrays.toString(testList));
@@ -43,10 +67,28 @@ public class SortAlgorithmTest {
 		// System.out.println(Arrays.toString(testList));
 	}
 
+	/**
+	 * <p>
+	 * Handles parameters for this test.
+	 * </p>
+	 * 
+	 * @return Collection of parameters for the test constructor
+	 */
 	@Parameterized.Parameters
 	public static Collection<Object[]> instancesToTest() {
-		return Arrays.asList(new Object[] { new Quicksort() },
-				new Object[] { new BubbleSort() });
+		SortAlgorithm quickSort = new Quicksort();
+		SortAlgorithm bubbleSort = new BubbleSort();
+		return Arrays.asList(new Object[] { quickSort, 10000, 10000 },
+				new Object[] { quickSort, 50000, 50000 }, new Object[] {
+						quickSort, 100000, 100000 }, new Object[] { quickSort,
+						500000, 500000 }, new Object[] { quickSort, 1000000,
+						1000000 },
+				new Object[] { quickSort, 10000000, 10000000 }, new Object[] {
+						quickSort, 10000000, 100000000 }, new Object[] {
+						quickSort, 10000000, 300000000 }, new Object[] {
+						bubbleSort, 10000, 10000 }, new Object[] { bubbleSort,
+						50000, 50000 }, new Object[] { bubbleSort, 100000,
+						100000 });
 	}
 
 }
